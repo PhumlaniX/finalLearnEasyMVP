@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">finalLearnEasyMVP</string>
+    <string name="password">Password</string>
+    <string name="image">image</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_yet_sign_up">Don\'t have an Account Yet? Sign up</string>
+    <string name="user_login">USER LOGIN</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="bio">Bio</string>
+    <string name="already_have_an_account_login">Already have an Account? Login</string>
+    <string name="user_sign_up">Sign Up</string>
+    <string name="imagesignup">imagesignup</string>
+    <string name="imageLogin">imageLogin</string>
+    <string name="last_namesignup">last_namesignup</string>
+    <string name="emailsignup">emailsignup</string>
+    <string name="passwordsignup">passwordsignup</string>
+    <string name="bio_signup">bio_signup</string>
+    <string name="first_namesignup">first_namesignup</string>
+    <string name="emaillogin">emaillogin</string>
+    <string name="passwordlogin">passwordlogin</string>
+</resources>
