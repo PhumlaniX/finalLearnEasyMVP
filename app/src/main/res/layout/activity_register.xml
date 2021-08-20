@@ -43,29 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fl_header_image"/>
 
-    <EditText
-        android:id="@+id/et_first_nameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        android:hint="@string/first_namesignup"
-        android:inputType="text"
-        android:layout_margin="10dp"/>
 
-    <EditText
-        android:id="@+id/et_last_nameInput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_first_nameInput"
-        android:hint="@string/last_namesignup"
-        android:inputType="text"
-        android:layout_margin="10dp"/>
 
     <EditText
         android:id="@+id/et_signup_emailInput"
@@ -74,7 +52,7 @@
         android:layout_marginTop="55dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_last_nameInput"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
         android:hint="@string/emailsignup"
         android:inputType="textEmailAddress"
         android:layout_margin="10dp"/>
@@ -91,17 +69,7 @@
         android:inputType="textPassword"
         android:layout_margin="10dp" />
 
-    <EditText
-        android:id="@+id/et_signup_bio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_signup_passwordInput"
-        android:hint="@string/bio_signup"
-        android:inputType="text"
-        android:layout_margin="10dp" />
+
 
     <Button
         android:id="@+id/btn_signup"
@@ -114,7 +82,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/et_signup_bio" />
+        app:layout_constraintTop_toBottomOf="@+id/et_signup_passwordInput" />
 
     <TextView
         android:id="@+id/tv_login"

@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.1'
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation 'com.google.gms:google-services:4.3.10'
-    implementation 'com.google.firebase:firebase-core:9.6.1'
+    implementation 'com.google.firebase:firebase-core:19.0.0'
 
     //Progress Dialog Library
     implementation 'com.jpardogo.googleprogressbar:library:1.2.0'

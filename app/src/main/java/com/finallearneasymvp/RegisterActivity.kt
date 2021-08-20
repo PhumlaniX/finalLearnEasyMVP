@@ -29,8 +29,12 @@ class RegisterActivity : AppCompatActivity() {
 
         register()
 
-        tv_login.setOnClickListener{
+        tv_login.setOnClickListener {
             onBackPressed()
+        }
+
+        tv_login.setOnClickListener {
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
         }
 
         /*val email = findViewById<EditText>(R.id.et_register_email)
@@ -104,9 +108,9 @@ class RegisterActivity : AppCompatActivity() {
     private fun register() {
         btn_signup.setOnClickListener {
 
-           //var fName = findViewById<EditText>(R.id.et_first_nameInput)
+            //var fName = findViewById<EditText>(R.id.et_first_nameInput)
 
-            if(TextUtils.isEmpty(et_first_nameInput.getText().toString())) {
+            /*if(TextUtils.isEmpty(et_first_nameInput.getText().toString())) {
                 et_first_nameInput.setError("Please enter your first name")
                 return@setOnClickListener
             }
@@ -114,45 +118,53 @@ class RegisterActivity : AppCompatActivity() {
             else if(TextUtils.isEmpty(et_last_nameInput.getText().toString())) {
                 et_first_nameInput.setError("Please enter your last name")
                 return@setOnClickListener
-            }
+            }*/
 
-            else if(TextUtils.isEmpty(et_signup_emailInput.getText().toString())) {
-                et_first_nameInput.setError("Please enter valid email address")
+            if (TextUtils.isEmpty(et_signup_emailInput.getText().toString())) {
+                et_signup_emailInput.setError("Please enter valid email address")
+                return@setOnClickListener
+            } else if (TextUtils.isEmpty(et_signup_passwordInput.getText().toString())) {
+                et_signup_passwordInput.setError("Please enter password")
                 return@setOnClickListener
             }
 
-            else if(TextUtils.isEmpty(et_signup_passwordInput.getText().toString())) {
-                et_first_nameInput.setError("Please enter password")
-                return@setOnClickListener
-            }
-
-            else if (TextUtils.isEmpty(et_signup_bio.getText().toString())) {
+            /*else if (TextUtils.isEmpty(et_signup_bio.getText().toString())) {
                 et_signup_bio.setError("Please tell us more about yourself")
-                return@setOnClickListener
-            }
+                return@setOnClickListener*/
+        }
 
-            auth.createUserWithEmailAndPassword(et_signup_emailInput.getText().toString(), passwordInput.getText().toString())
-                .addOnCompleteListener {
-                    if(it.isSuccessful) {
-                        val currentUser = auth.currentUser
-                        val currentUserDB = databaseReference?.child((currentUser?.uid!!))
-                        currentUserDB?.child("First Name")?.setValue(et_first_nameInput.getText().toString())
-                        currentUserDB?.child("Last Name")?.setValue(et_last_nameInput.getText().toString())
-                        currentUserDB?.child("Email")?.setValue(et_signup_emailInput.getText().toString())
-                        currentUserDB?.child("Password")?.setValue(et_signup_passwordInput.getText().toString())
-                        currentUserDB?.child("Password")?.setValue(et_signup_bio.getText().toString())
+        auth.createUserWithEmailAndPassword(
+            et_signup_emailInput.getText().toString(),
+            passwordInput.getText().toString()
+        )
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val currentUser = auth.currentUser
+                    val currentUserDB = databaseReference?.child((currentUser?.uid!!))
+                    /*currentUserDB?.child("First Name")?.setValue(et_first_nameInput.getText().toString())
+                        currentUserDB?.child("Last Name")?.setValue(et_last_nameInput.getText().toString())*/
+                    currentUserDB?.child("Email")
+                        ?.setValue(et_signup_emailInput.getText().toString())
+                    currentUserDB?.child("Password")
+                        ?.setValue(et_signup_passwordInput.getText().toString())
+                    //currentUserDB?.child("Password")?.setValue(et_signup_bio.getText().toString())
 
-                        Toast.makeText(this@RegisterActivity, "Welcome!!! Successfully registered!!!", Toast.LENGTH_SHORT).show()
-                        finish()
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        "Welcome!!! Successfully registered!!!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    finish()
 
-                    } else {
-                        Toast.makeText(this@RegisterActivity, "Registration failed. Please retry registration", Toast.LENGTH_SHORT).show()
-                    }
+                } else {
+                    Toast.makeText(
+                        this@RegisterActivity,
+                        "Registration failed. Please retry registration",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-        }
-
-        tv_login.setOnClickListener {
-            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-        }
+            }
     }
 }
+
+
