@@ -44,6 +44,29 @@
         app:layout_constraintTop_toBottomOf="@+id/fl_header_image"/>
 
 
+    <EditText
+        android:id="@+id/usernameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        android:hint="@string/usernamesignup"
+        android:inputType="text"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:id="@+id/usersurnameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameInput"
+        android:hint="@string/usersurnamesignup"
+        android:inputType="text"
+        android:layout_margin="10dp"/>
 
     <EditText
         android:id="@+id/et_signup_emailInput"
@@ -52,7 +75,7 @@
         android:layout_marginTop="55dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/usersurnameInput"
         android:hint="@string/emailsignup"
         android:inputType="textEmailAddress"
         android:layout_margin="10dp"/>

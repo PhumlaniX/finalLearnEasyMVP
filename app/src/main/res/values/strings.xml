@@ -21,4 +21,6 @@
     <string name="first_namesignup">first_namesignup</string>
     <string name="emaillogin">emaillogin</string>
     <string name="passwordlogin">passwordlogin</string>
+    <string name="usersurnamesignup" />
+    <string name="usernamesignup" />
 </resources>

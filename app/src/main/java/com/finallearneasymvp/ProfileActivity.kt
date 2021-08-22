@@ -1,6 +1,7 @@
 package com.finallearneasymvp
 
 import android.app.Dialog
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.Window
@@ -68,27 +69,30 @@ class ProfileActivity : AppCompatActivity() {
             finish()*/
         }
 
-        /*btn_logout.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
-            finish()
-        }*/
     }
 
     private fun loadProfile() {
         val user = auth.currentUser
         val userreference = databaseReference?.child(user?.uid!!)
 
+        tv_email_id.text = "Email: "+user?.email
+
         userreference?.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                tv_first_name.text = snapshot.child("First Name").value.toString()
-                tv_last_name.text = snapshot.child("Last Name").value.toString()
+                tv_first_name.text = "First Name: "+snapshot.child("firstname").value.toString()
+                tv_last_name.text = "Last Name:"+snapshot.child("lastname").value.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@ProfileActivity, "Failed to update first name and last name", Toast.LENGTH_SHORT).show()
             }
         })
+
+        btnlogout.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(this@ProfileActivity, WelcomeActivity::class.java))
+            finish()
+        }
     }
 
     private fun uploadProfilePic() {
