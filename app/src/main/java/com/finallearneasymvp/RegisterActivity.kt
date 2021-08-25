@@ -68,6 +68,9 @@ class RegisterActivity : AppCompatActivity() {
                             ?.setValue(et_signup_emailInput.text.toString().trim{it <= ' '})
                         currentUserDB?.child("Password")
                             ?.setValue(et_signup_passwordInput.text.toString().trim{it <= ' '})
+
+                        startActivity(Intent(this@RegisterActivity, ProfileActivity::class.java))
+                        finish()
                         Toast.makeText(
                             this@RegisterActivity,
                             "Welcome!!! Successfully registered!!!",
