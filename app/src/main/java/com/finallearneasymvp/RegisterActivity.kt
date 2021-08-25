@@ -38,36 +38,36 @@ class RegisterActivity : AppCompatActivity() {
 
         btn_signup.setOnClickListener {
 
-            if (TextUtils.isEmpty(usernameInput.text.toString())) {
+            if (TextUtils.isEmpty(usernameInput.text.toString().trim{it <= ' '})) {
                 usernameInput.setError("Please enter first name")
                 return@setOnClickListener
-            } else if (TextUtils.isEmpty(usersurnameInput.text.toString())) {
+            } else if (TextUtils.isEmpty(usersurnameInput.text.toString().trim{it <= ' '})) {
                 usersurnameInput.setError("Please enter last name")
                 return@setOnClickListener
-            } else if (TextUtils.isEmpty(et_signup_emailInput.text.toString())) {
+            } else if (TextUtils.isEmpty(et_signup_emailInput.text.toString().trim{it <= ' '})) {
                 et_signup_emailInput.setError("Please enter valid email address")
                 return@setOnClickListener
-            } else if (TextUtils.isEmpty(et_signup_passwordInput.text.toString())) {
+            } else if (TextUtils.isEmpty(et_signup_passwordInput.text.toString().trim{it <= ' '})) {
                 et_signup_passwordInput.setError("Please enter password")
                 return@setOnClickListener
             }
 
             auth.createUserWithEmailAndPassword(
-                et_signup_emailInput.text.toString(),
-                et_signup_passwordInput.text.toString()
+                et_signup_emailInput.text.toString().trim{it <= ' '},
+                et_signup_passwordInput.text.toString().trim{it <= ' '}
             )
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         val currentUser = auth.currentUser
                         val currentUserDB = databaseReference?.child((currentUser?.uid!!))
                         currentUserDB?.child("firstname")
-                            ?.setValue(usernameInput.text.toString())
+                            ?.setValue(usernameInput.text.toString().trim{it <= ' '})
                         currentUserDB?.child("lastname")
-                            ?.setValue(usersurnameInput.text.toString())
+                            ?.setValue(usersurnameInput.text.toString().trim{it <= ' '})
                         currentUserDB?.child("Email")
-                            ?.setValue(et_signup_emailInput.text.toString())
+                            ?.setValue(et_signup_emailInput.text.toString().trim{it <= ' '})
                         currentUserDB?.child("Password")
-                            ?.setValue(et_signup_passwordInput.text.toString())
+                            ?.setValue(et_signup_passwordInput.text.toString().trim{it <= ' '})
                         Toast.makeText(
                             this@RegisterActivity,
                             "Welcome!!! Successfully registered!!!",

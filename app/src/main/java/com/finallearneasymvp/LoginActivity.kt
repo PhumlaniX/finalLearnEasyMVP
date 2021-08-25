@@ -21,22 +21,30 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         auth = FirebaseAuth.getInstance()
+        //onStart()
         login()
 
     }
 
+    /*public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        login(currentUser)
+    }*/
+
     private fun login() {
         btn_login.setOnClickListener {
 
-            if (TextUtils.isEmpty(emailInput.text.toString())) {
+            if (TextUtils.isEmpty(emailInput.text.toString().trim{it <= ' '})) {
                 emailInput.error = ("Please enter valid email address")
                 return@setOnClickListener
-            } else if (TextUtils.isEmpty(passwordInput.text.toString())) {
+            } else if (TextUtils.isEmpty(passwordInput.text.toString().trim{it <= ' '})) {
                 passwordInput.error = ("Please enter password")
                 return@setOnClickListener
             }
 
-            auth.signInWithEmailAndPassword(emailInput.text.toString(), passwordInput.text.toString())
+            auth.signInWithEmailAndPassword(emailInput.text.toString().trim{it <= ' '}, passwordInput.text.toString().trim{it <= ' '})
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         startActivity(Intent(this@LoginActivity, ProfileActivity::class.java))
