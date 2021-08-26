@@ -1,8 +1,10 @@
 package com.finallearneasymvp
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +20,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var auth: FirebaseAuth
     var databaseReference: DatabaseReference? = null
     var database: FirebaseDatabase? = null
+    private lateinit var dialog : Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,10 @@ class RegisterActivity : AppCompatActivity() {
         databaseReference = database?.reference!!.child("profile")
 
         register()
+
+        tv_login.setOnClickListener {
+            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+        }
 
         /*tv_login.setOnClickListener {
             onBackPressed()
@@ -69,8 +76,15 @@ class RegisterActivity : AppCompatActivity() {
                         currentUserDB?.child("Password")
                             ?.setValue(et_signup_passwordInput.text.toString().trim{it <= ' '})
 
+                        /*val user = User (
+                            currentUserDB.uid,
+                            usernameInput.text.toString().trim{it <= ' '},
+                            usersurnameInput.text.toString().trim{it <= ' '},
+                            usersurnameInput.text.toString().trim{it <= ' '},
+                            et_signup_passwordInput.text.toString().trim{it <= ' '}
+                        )*/
+                        showProgressBar()
                         startActivity(Intent(this@RegisterActivity, ProfileActivity::class.java))
-                        finish()
                         Toast.makeText(
                             this@RegisterActivity,
                             "Welcome!!! Successfully registered!!!",
@@ -79,6 +93,7 @@ class RegisterActivity : AppCompatActivity() {
                         finish()
 
                     } else {
+                        hideProgressBar()
                         Toast.makeText(
                             this@RegisterActivity,
                             "Registration failed. Please retry registration",
@@ -86,12 +101,20 @@ class RegisterActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
-
-            tv_login.setOnClickListener {
-                startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
-            }
-
         }
+    }
+
+    private fun showProgressBar() {
+        dialog = Dialog(this@RegisterActivity)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.dialog_wait)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.show()
+    }
+
+
+    private fun hideProgressBar() {
+        dialog.dismiss()
     }
 }
 

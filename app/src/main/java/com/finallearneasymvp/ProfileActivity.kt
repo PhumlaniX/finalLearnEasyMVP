@@ -64,7 +64,17 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
 
-            /*mFirebaseAuth.getInstance().signOut()
+            tv_login.setOnClickListener {
+                startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
+            }
+
+            btnlogout.setOnClickListener {
+                auth.signOut()
+                startActivity(Intent(this@ProfileActivity, WelcomeActivity::class.java))
+                finish()
+            }
+
+            /*FirebaseAuth.getInstance().signOut()
             startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
             finish()*/
         }
@@ -87,16 +97,10 @@ class ProfileActivity : AppCompatActivity() {
                 Toast.makeText(this@ProfileActivity, "Failed to update first name and last name", Toast.LENGTH_SHORT).show()
             }
         })
-
-        btnlogout.setOnClickListener {
-            auth.signOut()
-            startActivity(Intent(this@ProfileActivity, WelcomeActivity::class.java))
-            finish()
-        }
     }
 
     private fun uploadProfilePic() {
-        imageUri = Uri.parse("android.resource://$packageName/${R.drawable.user}")
+        imageUri = Uri.parse("android.resource://$packageName/${R.drawable.ic_account_circle}")
         storageReference = FirebaseStorage.getInstance().getReference("Users/"+auth.currentUser?.uid)
         storageReference.putFile(imageUri).addOnSuccessListener {
             hideProgressBar()

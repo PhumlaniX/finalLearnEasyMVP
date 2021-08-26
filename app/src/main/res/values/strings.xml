@@ -23,4 +23,7 @@
     <string name="passwordlogin">passwordlogin</string>
     <string name="usersurnamesignup" />
     <string name="usernamesignup" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Settings" />
 </resources>
