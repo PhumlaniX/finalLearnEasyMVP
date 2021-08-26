@@ -105,6 +105,7 @@ class ProfileActivity : AppCompatActivity() {
         storageReference.putFile(imageUri).addOnSuccessListener {
             hideProgressBar()
             Toast.makeText(this@ProfileActivity, "Profile picture successfully uploaded", Toast.LENGTH_SHORT).show()
+            startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
         }.addOnFailureListener {
             hideProgressBar()
             Toast.makeText(this@ProfileActivity, "Failed to upload profile picture", Toast.LENGTH_SHORT).show()
