@@ -26,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         //onStart()
         login()
+
         tv_register.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
         }
@@ -42,15 +43,15 @@ class LoginActivity : AppCompatActivity() {
     private fun login() {
         btn_login.setOnClickListener {
 
-            if (TextUtils.isEmpty(emailInput.text.toString().trim{it <= ' '})) {
+            if (TextUtils.isEmpty(emailInput.text.toString().trim { it <= ' '})) {
                 emailInput.error = ("Please enter valid email address")
                 return@setOnClickListener
-            } else if (TextUtils.isEmpty(passwordInput.text.toString().trim{it <= ' '})) {
+            } else if (TextUtils.isEmpty(passwordInput.text.toString().trim { it <= ' '})) {
                 passwordInput.error = ("Please enter password")
                 return@setOnClickListener
             }
 
-            auth.signInWithEmailAndPassword(emailInput.text.toString().trim{it <= ' '}, passwordInput.text.toString().trim{it <= ' '})
+            auth.signInWithEmailAndPassword(emailInput.text.toString().trim { it <= ' '}, passwordInput.text.toString().trim { it <= ' '})
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         showProgressBar()

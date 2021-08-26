@@ -60,21 +60,21 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             auth.createUserWithEmailAndPassword(
-                et_signup_emailInput.text.toString().trim{it <= ' '},
-                et_signup_passwordInput.text.toString().trim{it <= ' '}
+                et_signup_emailInput.text.toString().trim { it <= ' '},
+                et_signup_passwordInput.text.toString().trim { it <= ' '}
             )
                 .addOnCompleteListener {
                     if (it.isSuccessful) {
                         val currentUser = auth.currentUser
                         val currentUserDB = databaseReference?.child((currentUser?.uid!!))
                         currentUserDB?.child("firstname")
-                            ?.setValue(usernameInput.text.toString().trim{it <= ' '})
+                            ?.setValue(usernameInput.text.toString().trim { it <= ' '})
                         currentUserDB?.child("lastname")
-                            ?.setValue(usersurnameInput.text.toString().trim{it <= ' '})
+                            ?.setValue(usersurnameInput.text.toString().trim { it <= ' '})
                         currentUserDB?.child("Email")
-                            ?.setValue(et_signup_emailInput.text.toString().trim{it <= ' '})
+                            ?.setValue(et_signup_emailInput.text.toString().trim { it <= ' '})
                         currentUserDB?.child("Password")
-                            ?.setValue(et_signup_passwordInput.text.toString().trim{it <= ' '})
+                            ?.setValue(et_signup_passwordInput.text.toString().trim { it <= ' '})
 
                         /*val user = User (
                             currentUserDB.uid,

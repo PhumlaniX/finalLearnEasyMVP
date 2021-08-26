@@ -64,7 +64,7 @@ class ProfileActivity : AppCompatActivity() {
                 }
             }
 
-            tv_login.setOnClickListener {
+            tv_skip.setOnClickListener {
                 startActivity(Intent(this@ProfileActivity, MainActivity::class.java))
             }
 
